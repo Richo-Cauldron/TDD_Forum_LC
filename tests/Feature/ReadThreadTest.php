@@ -45,15 +45,15 @@ class ReadThreadTest extends TestCase
     }
  
    /** @test */
-    // function a_user_can_filter_threads_according_to_a_channel_tag()
-    // {
-    //     $channel = create('App\Channel');
+    function a_user_can_filter_threads_according_to_a_channel_tag()
+    {
+        $channel = create('App\Channel');
 
-    //     $threadInChannel = create('App\Thread', ['channel_id' => $channel->id ]);
-    //     $threadNotInChannel = create('App\Thread');
+        $threadInChannel = create('App\Thread', ['channel_id' => $channel->id ]);
+        $threadNotInChannel = create('App\Thread');
 
-    //     $this->get('/threads/' . $channel->slug)
-    //          -> assertSee($threadInChannel->title)
-    //          -> assertSee($threadNotInChannel->title);
-    // }
+        $this->get('/threads/' . $channel->slug)
+             -> assertSee($threadInChannel->title)
+             -> assertDontSee($threadNotInChannel->title);
+    }
 }
