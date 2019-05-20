@@ -62,6 +62,7 @@ class ThreadsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(request()->all()); // to prove channel_id is being passed
         $this->validate($request, [
             'title' => 'required',
             'body'  => 'required',

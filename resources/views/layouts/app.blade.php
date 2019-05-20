@@ -33,6 +33,10 @@
                     Channels
                   </a>
 
+                  <a class="btn btn-info navbar-brand" href="/threads/create" role="button" id="" aria-haspopup="true" aria-expanded="false">
+                    New Thread
+                  </a>
+
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     @foreach (App\Channel::all() as $channel)
                         <a class="dropdown-item" href="/threads/{{$channel->slug}}">{{$channel->name}}</a>
