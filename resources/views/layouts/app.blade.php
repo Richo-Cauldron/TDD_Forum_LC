@@ -26,23 +26,34 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="btn btn-info navbar-brand" href="/threads">All Threads</a>
+                <div class="dropdown">
+                  <a class="btn btn-info dropdown-toggle navbar-brand" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Browse
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="/threads">All Threads</a>
+                        @if (auth()->check())
+                            <a class="dropdown-item" href="/threads?by={{auth()->user()->name}}">My Threads</a>
+                        @endif
+                  </div>
+                </div>
 
                 <div class="dropdown">
                   <a class="btn btn-info dropdown-toggle navbar-brand" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Channels
                   </a>
-
-                  <a class="btn btn-info navbar-brand" href="/threads/create" role="button" id="" aria-haspopup="true" aria-expanded="false">
-                    New Thread
-                  </a>
-
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     @foreach (App\Channel::all() as $channel)
                         <a class="dropdown-item" href="/threads/{{$channel->slug}}">{{$channel->name}}</a>
                     @endforeach
                   </div>
                 </div>
+                <div>
+                    <a class="btn btn-info navbar-brand" href="/threads/create" role="button" id="" aria-haspopup="true" aria-expanded="false">
+                    New Thread
+                    </a>  
+                </div>
+                  
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
