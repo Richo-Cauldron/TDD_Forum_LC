@@ -32,6 +32,17 @@
             @endif
                
         </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <a href="#">{{ $thread->creator->name }}</a> posted {{ $thread->title }}
+                </div>
+
+                <div class="card-body">
+                    {{ $thread->body }}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
